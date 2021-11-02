@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+ <!--pjax：防止跳转页面音乐暂停-->
+  <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script> 
+
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="1.ROS Hello world1.1 C++ 版Hello world一.主要流程如下: 1.创建一个工作空间 2.创建一个功能包 3.编辑源文件 4.编辑配置文件 5.编译并执行  创建工作空间并初始化 123mkdir -p name&#x2F;srccd namecatkin_make 上述命令，首先会创建一个工作空间以及一个 src 子目录，然后再进入工作空间调用 catkin_mak">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ros">
+<meta property="og:url" content="http://example.com/2021/07/14/Ros/index.html">
+<meta property="og:site_name" content="Grit&#39;s blog">
+<meta property="og:description" content="1.ROS Hello world1.1 C++ 版Hello world一.主要流程如下: 1.创建一个工作空间 2.创建一个功能包 3.编辑源文件 4.编辑配置文件 5.编译并执行  创建工作空间并初始化 123mkdir -p name&#x2F;srccd namecatkin_make 上述命令，首先会创建一个工作空间以及一个 src 子目录，然后再进入工作空间调用 catkin_mak">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-14T01:17:41.000Z">
+<meta property="article:modified_time" content="2021-07-16T12:35:44.240Z">
+<meta property="article:author" content="grit">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/07/14/Ros/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Ros | Grit's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<!-- 樱花特效 -->
+  
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/xiangruiA" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Grit's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description"> 爱自已，是一生浪漫的开始。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="comment fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/14/Ros/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="grit">
+      <meta itemprop="description" content="身体和灵魂总要有一个在路上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Grit's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ros
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-14 09:17:41" itemprop="dateCreated datePublished" datetime="2021-07-14T09:17:41+08:00">2021-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-16 20:35:44" itemprop="dateModified" datetime="2021-07-16T20:35:44+08:00">2021-07-16</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/07/14/Ros/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/14/Ros/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">
+
+阅读时长 &asymp;
+
+</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+        <h2 id="1-ROS-Hello-world"><a href="#1-ROS-Hello-world" class="headerlink" title="1.ROS Hello world"></a>1.ROS Hello world</h2><h3 id="1-1-C-版Hello-world"><a href="#1-1-C-版Hello-world" class="headerlink" title="1.1 C++ 版Hello world"></a>1.1 C++ 版Hello world</h3><p><strong>一.主要流程如下:</strong></p>
+<p>1.创建一个工作空间</p>
+<p>2.创建一个功能包</p>
+<p>3.编辑源文件</p>
+<p>4.编辑配置文件</p>
+<p>5.编译并执行 </p>
+<p><strong>创建工作空间并初始化</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p name&#x2F;src</span><br><span class="line">cd name</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+<p>上述命令，首先会创建一个工作空间以及一个 src 子目录，然后再进入工作空间调用 catkin_make命令编译。</p>
+<p><strong>进入src创建ros包并添加依赖</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd src</span><br><span class="line">catkin_create_pkg 自定义包 roscpp rospy std_msgs</span><br></pre></td></tr></table></figure>
+<p>上述命令，会在工作空间下生成一个功能包，该功能包依赖于 roscpp、rospy 与 std_msgs，其中roscpp是使用C++实现的库，而rospy则是使用python实现的库，std_msgs是标准消息库，创建ROS功能包时，一般都会依赖这三个库实现。</p>
+<p><strong>进入ros包的src目录编辑源文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd 自定义包</span><br></pre></td></tr></table></figure>
+<p><strong>C++源码实现</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//执行ros节点初始化</span></span><br><span class="line">    ros::init(argc,argv,<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    <span class="comment">// 创建ros节点句柄</span></span><br><span class="line">    ros::NodeHandle n;</span><br><span class="line">    <span class="comment">//控制台输出 hello world;</span></span><br><span class="line">    ROS_INFO(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>编辑ros包下的Cmakelist.txt 文件</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add_executable(步骤<span class="number">3</span>的源文件名</span><br><span class="line">  src/步骤<span class="number">3</span>的源文件名.cpp</span><br><span class="line">)</span><br><span class="line">target_link_libraries(步骤<span class="number">3</span>的源文件名</span><br><span class="line">  $&#123;catkin_LIBRARIES&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><strong>进入工作空间目录并编译</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-Python-版-Hello-world"><a href="#1-2-Python-版-Hello-world" class="headerlink" title="1.2 Python 版 Hello world"></a>1.2 Python 版 Hello world</h3><p><strong>进入ros包添加scripts目录并编辑python文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ros包</span><br><span class="line">mkdir scripts</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>新建python文件</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Python 版 HelloWorld</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    rospy.init_node(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">    rospy.loginfo(<span class="string">&quot;Hello World!!!!&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>为python文件添加可执行权限</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x 自定义名称.py</span><br></pre></td></tr></table></figure>
+<p><strong>编辑ros包下的CamakeList.txt文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">catkin_install_python(PROGRAMS scripts&#x2F;自定义文件名.py</span><br><span class="line">  DESTINATION $&#123;CATKIN_PACKAGE_BIN_DESTINATION&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><strong>进入工作空间目录并编译</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 自定义空间名称</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+<p><strong>进入工作空间目录并执行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roscore</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd 工作空间</span><br><span class="line">source .&#x2F;devel&#x2F;setup.bash</span><br><span class="line">rourun 包名 自定义文件名.py</span><br></pre></td></tr></table></figure>
+<h3 id="第一章总结"><a href="#第一章总结" class="headerlink" title="第一章总结"></a>第一章总结</h3><h4 id="①使用ros编写-C-版本hello-world"><a href="#①使用ros编写-C-版本hello-world" class="headerlink" title="①使用ros编写 C++ 版本hello world"></a>①使用ros编写 C++ 版本hello world</h4><p><strong>创建环境</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p testchapter1/src  <span class="comment">//创建工作环境</span></span><br><span class="line">cd testchapter1            <span class="comment">// 进入工作环境</span></span><br><span class="line">catkin_make                <span class="comment">// 编译ROS环境</span></span><br></pre></td></tr></table></figure>
+<p><strong>进入src 创建包并添加依赖</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd src </span><br><span class="line">catkin_create_pkg hellorosworld rospy roscpp std_msgs</span><br></pre></td></tr></table></figure>
+<p><strong>进入包中的src文件 构建自定义名称源码</strong></p>
+<p><strong>C++源文件</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//执行 ros 节点初始化</span></span><br><span class="line">    ros::init(argc,argv,<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    <span class="comment">//创建 ros 节点句柄(非必须)</span></span><br><span class="line">    ros::NodeHandle n;</span><br><span class="line">    <span class="comment">//控制台输出 hello world</span></span><br><span class="line">    ROS_INFO(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>编辑ROS 包下CMakeLists.txt中的环境配置文件</strong></p>
+<p>149 136 行  add_executable  和target_link 代码块</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">add_executable($&#123;PROJECT_NAME&#125;_node src/hellorosworld_node.cpp)</span><br><span class="line"></span><br><span class="line">更改为：</span><br><span class="line">add_executable(hahaha src/自定义名称.cpp)  <span class="comment">//第一个参数为自定义节点名称，该节点映射到 参数2的c++文件当中</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">target_link_libraries($&#123;PROJECT_NAME&#125;_node</span><br><span class="line">  $&#123;catkin_LIBRARIES&#125;</span><br><span class="line">)</span><br><span class="line">target_link_libraries(hahaha</span><br><span class="line">  $&#123;catkin_LIBRARIES&#125;</span><br><span class="line">                      </span><br><span class="line">                      <span class="comment">//更改第一个参数为自定义节点名称 改节点映射到c++文件当中</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><strong>编译文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在工作空间目录下</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+<p><strong>执行文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd work_space </span><br><span class="line">source .&#x2F;devel&#x2F;setup.bash</span><br><span class="line">rosrun 包名 节点名</span><br></pre></td></tr></table></figure>
+<h4 id="②使用ros编写-python版本hello-world"><a href="#②使用ros编写-python版本hello-world" class="headerlink" title="②使用ros编写 python版本hello world"></a>②使用ros编写 python版本hello world</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ros包</span><br><span class="line">mkdir scripts </span><br></pre></td></tr></table></figure>
+<p><strong>在scripts下新建python文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#! &#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">    Python 版 HelloWorld</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import rospy</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    rospy.init_node(&quot;Hello&quot;)</span><br><span class="line">    rospy.loginfo(&quot;Hello World!!!!&quot;)</span><br></pre></td></tr></table></figure>
+<p><strong>为python 文件添加可执行权限</strong></p>
+<p><code>chmod +x     自定义名.py</code></p>
+<p><strong>编辑ROS包下的CMakeLists.txt中的环境配置文件</strong></p>
+<p>162行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">catkin_install_python(PROGRAMS</span><br><span class="line">  scripts&#x2F;my_python_script</span><br><span class="line">  DESTINATION $&#123;CATKIN_PACKAGE_BIN_DESTINATION&#125;</span><br><span class="line">)</span><br><span class="line">修改一个参数 </span><br><span class="line">catkin_install_python(PROGRAMS</span><br><span class="line">  scripts&#x2F;自定义名.py</span><br><span class="line">  DESTINATION $&#123;CATKIN_PACKAGE_BIN_DESTINATION&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><strong>编译文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd workspace </span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+<p><strong>执行文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source .&#x2F;devel&#x2F;setup.bash</span><br><span class="line">rosrun pack_name 自定义.py</span><br></pre></td></tr></table></figure>
+<h4 id="③使用VScode编辑"><a href="#③使用VScode编辑" class="headerlink" title="③使用VScode编辑"></a>③使用VScode编辑</h4><p><strong>创建ROS空间</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p workspace&#x2F;src</span><br><span class="line">cd workspace </span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+<p><strong>进入Vscode</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd workspace</span><br><span class="line">code .</span><br></pre></td></tr></table></figure>
+<p><strong>在vscode 中编译ros</strong></p>
+<p>快捷键 ctrl + shift + B 调用编译，选择:<code>catkin_make:build</code></p>
+<p>可以点击配置设置为默认，修改.vscode/tasks.json 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&#x2F;&#x2F; 有关 tasks.json 格式的文档，请参见</span><br><span class="line">		&#x2F;&#x2F; https:&#x2F;&#x2F;go.microsoft.com&#x2F;fwlink&#x2F;?LinkId&#x3D;733558</span><br><span class="line">		&quot;version&quot;: &quot;2.0.0&quot;,</span><br><span class="line">		&quot;tasks&quot;: [</span><br><span class="line">			&#123;</span><br><span class="line">				&quot;label&quot;: &quot;catkin_make:debug&quot;, &#x2F;&#x2F;代表提示的描述性信息</span><br><span class="line">				&quot;type&quot;: &quot;shell&quot;,  &#x2F;&#x2F;可以选择shell或者process,如果是shell代码是在shell里面运行一个命令，如果是process代表作为一个进程来运行</span><br><span class="line">				&quot;command&quot;: &quot;catkin_make&quot;,&#x2F;&#x2F;这个是我们需要运行的命令</span><br><span class="line">				&quot;args&quot;: [],&#x2F;&#x2F;如果需要在命令后面加一些后缀，可以写在这里，比如-DCATKIN_WHITELIST_PACKAGES&#x3D;“pac1;pac2”</span><br><span class="line">				&quot;group&quot;: &#123;&quot;kind&quot;:&quot;build&quot;,&quot;isDefault&quot;:true&#125;,</span><br><span class="line">				&quot;presentation&quot;: &#123;</span><br><span class="line">					&quot;reveal&quot;: &quot;always&quot;&#x2F;&#x2F;可选always或者silence，代表是否输出信息</span><br><span class="line">				&#125;,</span><br><span class="line">				&quot;problemMatcher&quot;: &quot;$msCompile&quot;</span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>创建ros功能包</strong></p>
+<p>选定 src 右击 —-&gt; create catkin package</p>
+<p><strong>设置包名 添加依赖</strong></p>
+<p><strong>在src下新建cpp文件</strong></p>
+<p><strong>修改CMake 文件</strong></p>
+<p><strong>运行</strong></p>
+<h3 id="④launch-文件实现"><a href="#④launch-文件实现" class="headerlink" title="④launch 文件实现"></a>④launch 文件实现</h3><ol>
+<li><p>选择包文件夹，添加launch文件夹</p>
+</li>
+<li><p>在launch文件夹下添加launch文件</p>
+</li>
+<li><p>编辑launch文件内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;launch&gt;</span><br><span class="line">    &lt;!-- 添加执行节点--&gt;</span><br><span class="line">    &lt;!-- 乌龟GUI--&gt;</span><br><span class="line">    &lt;node pkg&#x3D;&quot;turtlesim&quot; type&#x3D;&quot;turtlesim_node&quot; name&#x3D;&quot;turtle_GUI&quot; &#x2F;&gt;</span><br><span class="line">     &lt;node pkg&#x3D;&quot;turtlesim&quot; type&#x3D;&quot;turtle_teleop_key&quot; name&#x3D;&quot;turtle_key&quot; &#x2F;&gt;</span><br><span class="line">     &lt;node pkg&#x3D;&quot;hellovscode&quot; type&#x3D;&quot;hellovscode_c&quot; name&#x3D;&quot;hello&quot; output&#x3D;&quot;screen&quot;&#x2F;&gt;</span><br><span class="line">     &lt;node pkg&#x3D;&quot;hellovscode&quot; type&#x3D;&quot;hellovscode_p.py&quot; name&#x3D;&quot;hellop&quot; output&#x3D;&quot;screen&quot;&#x2F;&gt;</span><br><span class="line">    &lt;!-- --&gt;</span><br><span class="line">&lt;&#x2F;launch&gt;</span><br></pre></td></tr></table></figure>
+<p>运行launch 文件</p>
+<p><code>roslaunch 包名 launch文件名</code></p>
+<p>运行结果：一次启动了多个节点</p>
+</li>
+</ol>
+<h2 id="2-ROS通信机制"><a href="#2-ROS通信机制" class="headerlink" title="2.ROS通信机制"></a>2.ROS通信机制</h2><p>ROS 中的基本通信机制主要有如下三种实现策略：</p>
+<ul>
+<li>话题通信（发布订阅模式)</li>
+<li>服务通信（请求响应模式）</li>
+<li>参数服务器（参数共享模式）</li>
+</ul>
+<h3 id="2-1话题通信"><a href="#2-1话题通信" class="headerlink" title="2.1话题通信"></a>2.1话题通信</h3><p>话题通信是ROS中使用频率最高的一种通信模式，话题通信是基于发布订阅模式的，也即：一个节点发布消息，另一个节点订阅改消息。</p>
+<p><strong>C++版实现</strong></p>
+<p><strong>1.发布方</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;std_msgs/String.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sstream&quot;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    发布方实现:</span></span><br><span class="line"><span class="comment">        1.包含头文件</span></span><br><span class="line"><span class="comment">            ROS中的文本类型 std_msgs/String.h</span></span><br><span class="line"><span class="comment">        2.初始化ros节点 </span></span><br><span class="line"><span class="comment">        3.创建节点句柄</span></span><br><span class="line"><span class="comment">        4.创建发布者对象</span></span><br><span class="line"><span class="comment">        5.编写发布逻辑并发布数据</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>  *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* code */</span></span><br><span class="line">    setlocale(LC_ALL,<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化节点</span></span><br><span class="line">    ros::init(argc,argv,<span class="string">&quot;node_name&quot;</span>);</span><br><span class="line">    <span class="comment">//创建节点句柄</span></span><br><span class="line"></span><br><span class="line">    ros::NodeHandle nh;</span><br><span class="line">    ROS_INFO(<span class="string">&quot;hello world!!!&quot;</span>);</span><br><span class="line">    <span class="comment">// 创建发布者对象</span></span><br><span class="line">    ros::Publisher pub=nh.advertise&lt;std_msgs::String&gt;(<span class="string">&quot;fang&quot;</span>,<span class="number">10</span>);</span><br><span class="line">    <span class="comment">//编写发布逻辑并发布数据</span></span><br><span class="line">    <span class="comment">// 先创建被发布的消息，编写循环，循环中发布消息</span></span><br><span class="line">    <span class="comment">// 要求以10Hz的频率发布数据，并且在文本后添加序号</span></span><br><span class="line">    std_msgs::String msg;</span><br><span class="line">    <span class="function">ros::Rate <span class="title">rate</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">    <span class="comment">//编写循环</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置编号</span></span><br><span class="line">    <span class="keyword">int</span> count =<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (ros::ok)</span><br><span class="line">    &#123;   </span><br><span class="line">        count++;</span><br><span class="line">        <span class="comment">// msg.data = &quot;hello&quot;;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//字符串的拼接</span></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">stringstream</span> ss;</span><br><span class="line">        ss&lt;&lt;<span class="string">&quot;hello --&gt;&quot;</span> &lt;&lt;count;</span><br><span class="line"></span><br><span class="line">        msg.data=ss.str();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// pub.publish(msg);</span></span><br><span class="line"></span><br><span class="line">        pub.publish(msg);</span><br><span class="line">        <span class="comment">//添加日至</span></span><br><span class="line">        ROS_INFO(<span class="string">&quot;发布的数据:%s&quot;</span>,ss.str().c_str());</span><br><span class="line">        rate.sleep();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>2.接收方</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;std_msgs/String.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sstream&quot;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    发布方实现:</span></span><br><span class="line"><span class="comment">        1.包含头文件</span></span><br><span class="line"><span class="comment">            ROS中的文本类型 std_msgs/String.h</span></span><br><span class="line"><span class="comment">        2.初始化ros节点 </span></span><br><span class="line"><span class="comment">        3.创建节点句柄</span></span><br><span class="line"><span class="comment">        4.创建发布者对象</span></span><br><span class="line"><span class="comment">        5.编写发布逻辑并发布数据</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doMsg</span><span class="params">(<span class="keyword">const</span> std_msgs::String::ConstPtr &amp;msg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//通过msg参数获取并订阅到的参数</span></span><br><span class="line">    ROS_INFO(<span class="string">&quot;翠花订阅到的数据：%s&quot;</span>,msg-&gt;data.c_str());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>  *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   setlocale(LC_ALL,<span class="string">&quot;&quot;</span>);</span><br><span class="line">   ros::init(argc,argv,<span class="string">&quot;cuiHua&quot;</span>);</span><br><span class="line"></span><br><span class="line">   ros::NodeHandle nh;</span><br><span class="line"></span><br><span class="line">   ros::Subscriber sub = nh.subscribe(<span class="string">&quot;fang&quot;</span>,<span class="number">10</span>,doMsg);</span><br><span class="line">   ros::spin();</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>配置CMakeLists.txt</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">add_executable(demo1_pub src&#x2F;demo01_pub.cpp)</span><br><span class="line">add_executable(demo1_sub src&#x2F;demo01_sub.cpp)</span><br><span class="line">target_link_libraries(demo1_pub</span><br><span class="line">  $&#123;catkin_LIBRARIES&#125;</span><br><span class="line">)</span><br><span class="line">target_link_libraries(demo1_sub</span><br><span class="line">  $&#123;catkin_LIBRARIES&#125;</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>执行</strong></p>
+<p>1.启动roscore</p>
+<p>2.启动发布节点</p>
+<p>3.启动订阅节点</p>
+<hr>
+<p><strong>PYTHON版实现</strong></p>
+<p>流程：</p>
+<ul>
+<li>编写发布方实现</li>
+<li>编写订阅方实现</li>
+<li>为python文件添加可执行权限</li>
+<li>编辑配置文件</li>
+<li>编译并运行</li>
+</ul>
+<p><strong>发布方</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span></span><br><span class="line"><span class="string">         实现的关键点:</span></span><br><span class="line"><span class="string">         1.发送方</span></span><br><span class="line"><span class="string">         2.接收方</span></span><br><span class="line"><span class="string">         3.数据(此处为普通文本)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">         PS: 二者需要设置相同的话题</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    消息发布方:</span></span><br><span class="line"><span class="string">        循环发布信息:HelloWorld 后缀数字编号</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    实现流程:</span></span><br><span class="line"><span class="string">        1.导包 </span></span><br><span class="line"><span class="string">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="string">        3.实例化 发布者 对象</span></span><br><span class="line"><span class="string">        4.组织被发布的数据，并编写逻辑发布数据</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导包 </span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> std_msgs.msg <span class="keyword">import</span> String</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;talker_p&quot;</span>)</span><br><span class="line">    <span class="comment">#3.实例化 发布者 对象</span></span><br><span class="line">    pub = rospy.Publisher(<span class="string">&quot;chatter&quot;</span>,String,queue_size=<span class="number">10</span>)</span><br><span class="line">    <span class="comment">#4.组织被发布的数据，并编写逻辑发布数据</span></span><br><span class="line">    msg = String()  <span class="comment">#创建 msg 对象</span></span><br><span class="line">    msg_front = <span class="string">&quot;hello 你好&quot;</span></span><br><span class="line">    count = <span class="number">0</span>  <span class="comment">#计数器 </span></span><br><span class="line">    <span class="comment"># 设置循环频率</span></span><br><span class="line">    rate = rospy.Rate(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> rospy.is_shu	tdown():</span><br><span class="line"></span><br><span class="line">        <span class="comment">#拼接字符串</span></span><br><span class="line">        msg.data = msg_front + <span class="built_in">str</span>(count)</span><br><span class="line"></span><br><span class="line">        pub.publish(msg)</span><br><span class="line">        rate.sleep()</span><br><span class="line">        rospy.loginfo(<span class="string">&quot;写出的数据:%s&quot;</span>,msg.data)</span><br><span class="line">        count += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>订阅方</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    需求: 实现基本的话题通信，一方发布数据，一方接收数据，</span></span><br><span class="line"><span class="string">         实现的关键点:</span></span><br><span class="line"><span class="string">         1.发送方</span></span><br><span class="line"><span class="string">         2.接收方</span></span><br><span class="line"><span class="string">         3.数据(此处为普通文本)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">         PS: 二者需要设置相同的话题</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    消息发布方:</span></span><br><span class="line"><span class="string">        循环发布信息:HelloWorld 后缀数字编号</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    实现流程:</span></span><br><span class="line"><span class="string">        1.导包 </span></span><br><span class="line"><span class="string">        2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line"><span class="string">        3.实例化 发布者 对象</span></span><br><span class="line"><span class="string">        4.组织被发布的数据，并编写逻辑发布数据</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导包 </span></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> std_msgs.msg <span class="keyword">import</span> String</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#2.初始化 ROS 节点:命名(唯一)</span></span><br><span class="line">    rospy.init_node(<span class="string">&quot;talker_p&quot;</span>)</span><br><span class="line">    <span class="comment">#3.实例化 发布者 对象</span></span><br><span class="line">    pub = rospy.Publisher(<span class="string">&quot;chatter&quot;</span>,String,queue_size=<span class="number">10</span>)</span><br><span class="line">    <span class="comment">#4.组织被发布的数据，并编写逻辑发布数据</span></span><br><span class="line">    msg = String()  <span class="comment">#创建 msg 对象</span></span><br><span class="line">    msg_front = <span class="string">&quot;hello 你好&quot;</span></span><br><span class="line">    count = <span class="number">0</span>  <span class="comment">#计数器 </span></span><br><span class="line">    <span class="comment"># 设置循环频率</span></span><br><span class="line">    rate = rospy.Rate(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> rospy.is_shutdown():</span><br><span class="line"></span><br><span class="line">        <span class="comment">#拼接字符串</span></span><br><span class="line">        msg.data = msg_front + <span class="built_in">str</span>(count)</span><br><span class="line"></span><br><span class="line">        pub.publish(msg)</span><br><span class="line">        rate.sleep()</span><br><span class="line">        rospy.loginfo(<span class="string">&quot;写出的数据:%s&quot;</span>,msg.data)</span><br><span class="line">        count += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/27/Altium-Designer/" rel="prev" title="Altium Designer">
+      <i class="fa fa-chevron-left"></i> Altium Designer
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+    <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+<embed id="musicplayer" frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=33756016&auto=1&height=32"></embed>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ROS-Hello-world"><span class="nav-text">1.ROS Hello world</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-C-%E7%89%88Hello-world"><span class="nav-text">1.1 C++ 版Hello world</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Python-%E7%89%88-Hello-world"><span class="nav-text">1.2 Python 版 Hello world</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%E6%80%BB%E7%BB%93"><span class="nav-text">第一章总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A0%E4%BD%BF%E7%94%A8ros%E7%BC%96%E5%86%99-C-%E7%89%88%E6%9C%AChello-world"><span class="nav-text">①使用ros编写 C++ 版本hello world</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A1%E4%BD%BF%E7%94%A8ros%E7%BC%96%E5%86%99-python%E7%89%88%E6%9C%AChello-world"><span class="nav-text">②使用ros编写 python版本hello world</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%91%A2%E4%BD%BF%E7%94%A8VScode%E7%BC%96%E8%BE%91"><span class="nav-text">③使用VScode编辑</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A3launch-%E6%96%87%E4%BB%B6%E5%AE%9E%E7%8E%B0"><span class="nav-text">④launch 文件实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ROS%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="nav-text">2.ROS通信机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E8%AF%9D%E9%A2%98%E9%80%9A%E4%BF%A1"><span class="nav-text">2.1话题通信</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="grit"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">grit</p>
+  <div class="site-description" itemprop="description">身体和灵魂总要有一个在路上</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xiangruiA" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xiangruiA" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/weixin_46108138" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_46108138" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=2543344628@qq.com" title="E - Mail → https:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;2543344628@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E - Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">grit</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">99k</span>
+    <div class="powered-by">
+    <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+       本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+    </div>
+
+   <span class="post-meta-divider">|</span>
+   
+   <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+   </span>
+
+
+   
+
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:30</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+		Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数
+        */
+		var t1 = Date.UTC(2020,02,13,15,00,00); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'qzNLqU1UIaQIMaCBaFi4SaRM-gzGzoHsz',
+      appKey     : 'vYdThgQ0euJt90NlkPCUkIBY',
+      placeholder: "欢迎留言",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
