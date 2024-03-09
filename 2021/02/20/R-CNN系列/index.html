@@ -21,49 +21,49 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+    var CONFIG = {"hostname":"xiangruihu.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
   </script>
 
   <meta name="description" content="RCNN算法流程可以分为4步  一张图像生成1k~2k个候选区（使用Selective Search方法) 对每个候选区，使用深度网络提取特征 特征送入每一类的SVM分类器，判别是否属于该类 使用回归器精修候选框的位置   RCNN1.候选区域的生成利用Selective Search 算法通过图像分割的方法得到一些原始区域，然后使用一些合并策略将这些区域合并，得到一个层次化的区域结构，而这些结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R-CNN系列">
-<meta property="og:url" content="http://example.com/2021/02/20/R-CNN%E7%B3%BB%E5%88%97/index.html">
+<meta property="og:url" content="https://xiangruihu.github.io/2021/02/20/R-CNN%E7%B3%BB%E5%88%97/index.html">
 <meta property="og:site_name" content="Grit&#39;s blog">
 <meta property="og:description" content="RCNN算法流程可以分为4步  一张图像生成1k~2k个候选区（使用Selective Search方法) 对每个候选区，使用深度网络提取特征 特征送入每一类的SVM分类器，判别是否属于该类 使用回归器精修候选框的位置   RCNN1.候选区域的生成利用Selective Search 算法通过图像分割的方法得到一些原始区域，然后使用一些合并策略将这些区域合并，得到一个层次化的区域结构，而这些结构">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/image-20210220224613367.png">
-<meta property="og:image" content="http://example.com/images/image-20210220224921809.png">
-<meta property="og:image" content="http://example.com/images/image-20210220225355794.png">
-<meta property="og:image" content="http://example.com/images/image-20210220225637704.png">
-<meta property="og:image" content="http://example.com/images/image-20210220225809207.png">
-<meta property="og:image" content="http://example.com/images/image-20210220230607096.png">
-<meta property="og:image" content="http://example.com/images/image-20210220230715121.png">
-<meta property="og:image" content="http://example.com/images/image-20210220230742445.png">
-<meta property="og:image" content="http://example.com/images/image-20210220231250464.png">
-<meta property="og:image" content="http://example.com/images/image-20210220231653267.png">
-<meta property="og:image" content="http://example.com/images/image-20210220231710202.png">
-<meta property="og:image" content="http://example.com/images/image-20210220231913323.png">
-<meta property="og:image" content="http://example.com/images/image-20210220231927215.png">
-<meta property="og:image" content="http://example.com/images/image-20210220232033464.png">
-<meta property="og:image" content="http://example.com/images/image-20210221235116193.png">
-<meta property="og:image" content="http://example.com/images/image-20210221235413000.png">
-<meta property="og:image" content="http://example.com/images/image-20210221235449162.png">
-<meta property="og:image" content="http://example.com/images/image-20210221235526354.png">
-<meta property="og:image" content="http://example.com/images/image-20210221235544561.png">
-<meta property="og:image" content="http://example.com/images/image-20210222000053961.png">
-<meta property="og:image" content="http://example.com/images/image-20210222000405863.png">
-<meta property="og:image" content="http://example.com/images/image-20210222000726549.png">
-<meta property="og:image" content="http://example.com/images/image-20210222000914406.png">
-<meta property="og:image" content="http://example.com/images/image-20210222000932053.png">
-<meta property="og:image" content="http://example.com/images/image-20210222000950134.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220224613367.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220224921809.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220225355794.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220225637704.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220225809207.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220230607096.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220230715121.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220230742445.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220231250464.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220231653267.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220231710202.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220231913323.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220231927215.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220232033464.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210221235116193.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210221235413000.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210221235449162.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210221235526354.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210221235544561.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210222000053961.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210222000405863.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210222000726549.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210222000914406.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210222000932053.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210222000950134.png">
 <meta property="article:published_time" content="2021-02-20T14:42:11.000Z">
 <meta property="article:modified_time" content="2021-02-21T16:10:09.196Z">
 <meta property="article:author" content="grit">
 <meta property="article:tag" content="cv">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/image-20210220224613367.png">
+<meta name="twitter:image" content="https://xiangruihu.github.io/images/image-20210220224613367.png">
 
-<link rel="canonical" href="http://example.com/2021/02/20/R-CNN%E7%B3%BB%E5%88%97/">
+<link rel="canonical" href="https://xiangruihu.github.io/2021/02/20/R-CNN%E7%B3%BB%E5%88%97/">
 
 
 <script id="page-configurations">
@@ -236,7 +236,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/20/R-CNN%E7%B3%BB%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="https://xiangruihu.github.io/2021/02/20/R-CNN%E7%B3%BB%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -527,7 +527,7 @@
 <div class="copyright">
   
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

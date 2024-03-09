@@ -21,128 +21,128 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+    var CONFIG = {"hostname":"xiangruihu.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
   </script>
 
   <meta name="description" content="一.引言（Introduction)1.1什么是机器学习第一个机器学习定义来源于Arthur Samuel,他定义为： 在特定的编程情况下，给予计算机学习能力。另一个年代近一点的定义，由   Tom Mitchell 提出，来自卡内基梅隆大学，Tom 定义的机器学习是，一个好的学习问题定义如下，他说，一个程序被认为能从经验 E 中学习，解决任务 T，达到性能度量值P，当且仅当，有了经验 E 后，经">
 <meta property="og:type" content="article">
 <meta property="og:title" content="吴恩达机器学习笔记">
-<meta property="og:url" content="http://example.com/2020/07/07/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="https://xiangruihu.github.io/2020/07/07/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Grit&#39;s blog">
 <meta property="og:description" content="一.引言（Introduction)1.1什么是机器学习第一个机器学习定义来源于Arthur Samuel,他定义为： 在特定的编程情况下，给予计算机学习能力。另一个年代近一点的定义，由   Tom Mitchell 提出，来自卡内基梅隆大学，Tom 定义的机器学习是，一个好的学习问题定义如下，他说，一个程序被认为能从经验 E 中学习，解决任务 T，达到性能度量值P，当且仅当，有了经验 E 后，经">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/image-20210216224108606.png">
-<meta property="og:image" content="http://example.com/images/image-20210216225057126.png">
-<meta property="og:image" content="http://example.com/images/image-20210216225452470.png">
-<meta property="og:image" content="http://example.com/images/image-20210216225824075.png">
-<meta property="og:image" content="http://example.com/images/image-20210216232328225.png">
-<meta property="og:image" content="http://example.com/images/image-20210216232438960.png">
-<meta property="og:image" content="http://example.com/images/image-20210216232605293.png">
-<meta property="og:image" content="http://example.com/images/image-20210216234140487.png">
-<meta property="og:image" content="http://example.com/images/image-20210216234256392.png">
-<meta property="og:image" content="http://example.com/images/image-20210216234547570.png">
-<meta property="og:image" content="http://example.com/images/image-20210216235141468.png">
-<meta property="og:image" content="http://example.com/images/image-20210216235152322.png">
-<meta property="og:image" content="http://example.com/images/image-20210216235528290.png">
-<meta property="og:image" content="http://example.com/images/image-20210216235547767.png">
-<meta property="og:image" content="http://example.com/images/image-20210216235758941.png">
-<meta property="og:image" content="http://example.com/images/image-20210217000026099.png">
-<meta property="og:image" content="http://example.com/images/image-20210217000338121.png">
-<meta property="og:image" content="http://example.com/images/image-20210217000401134.png">
-<meta property="og:image" content="http://example.com/images/image-20210217002837122.png">
-<meta property="og:image" content="http://example.com/images/image-20210217000534228.png">
-<meta property="og:image" content="http://example.com/images/image-20210217000553809.png">
-<meta property="og:image" content="http://example.com/images/image-20210217002957464.png">
-<meta property="og:image" content="http://example.com/images/image-20210217003019388.png">
-<meta property="og:image" content="http://example.com/images/image-20210217003035133.png">
-<meta property="og:image" content="http://example.com/images/image-20210217002906737.png">
-<meta property="og:image" content="http://example.com/images/image-20210217135149679.png">
-<meta property="og:image" content="http://example.com/images/image-20210217135313151.png">
-<meta property="og:image" content="http://example.com/images/image-20210217135736845.png">
-<meta property="og:image" content="http://example.com/images/image-20210217135935284.png">
-<meta property="og:image" content="http://example.com/images/image-20210217140013223.png">
-<meta property="og:image" content="http://example.com/images/image-20210217140116234.png">
-<meta property="og:image" content="http://example.com/images/image-20210217140159797.png">
-<meta property="og:image" content="http://example.com/images/image-20210217141700534.png">
-<meta property="og:image" content="http://example.com/images/image-20210217141916558.png">
-<meta property="og:image" content="http://example.com/images/image-20210217141936436.png">
-<meta property="og:image" content="http://example.com/images/image-20210217141947358.png">
-<meta property="og:image" content="http://example.com/images/image-20210217142148319.png">
-<meta property="og:image" content="http://example.com/images/image-20210217142153897.png">
-<meta property="og:image" content="http://example.com/images/image-20210217142200423.png">
-<meta property="og:image" content="http://example.com/images/image-20210217144009670.png">
-<meta property="og:image" content="http://example.com/images/image-20210217144026104.png">
-<meta property="og:image" content="http://example.com/images/image-20210217144136166.png">
-<meta property="og:image" content="http://example.com/images/image-20210217144228881.png">
-<meta property="og:image" content="http://example.com/images/image-20210217144303006.png">
-<meta property="og:image" content="http://example.com/images/image-20210217144426235.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161127888.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161153908.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161321350.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161337520.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161351222.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161449597.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161519095.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161533113.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161643826.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161726641.png">
-<meta property="og:image" content="http://example.com/images/image-20210218161742466.png">
-<meta property="og:image" content="http://example.com/images/image-20210218162307180.png">
-<meta property="og:image" content="http://example.com/images/image-20210218162409718.png">
-<meta property="og:image" content="http://example.com/images/image-20210218162601709.png">
-<meta property="og:image" content="http://example.com/images/image-20210218162658334.png">
-<meta property="og:image" content="http://example.com/images/image-20210218162722849.png">
-<meta property="og:image" content="http://example.com/images/image-20210218162755926.png">
-<meta property="og:image" content="http://example.com/images/image-20210218162804677.png">
-<meta property="og:image" content="http://example.com/images/image-20210218162820290.png">
-<meta property="og:image" content="http://example.com/images/image-20210218162916440.png">
-<meta property="og:image" content="http://example.com/images/image-20210218162943804.png">
-<meta property="og:image" content="http://example.com/images/image-20210219205008736.png">
-<meta property="og:image" content="http://example.com/images/image-20210219205031615.png">
-<meta property="og:image" content="http://example.com/images/image-20210219205335962.png">
-<meta property="og:image" content="http://example.com/images/image-20210219205424685.png">
-<meta property="og:image" content="http://example.com/images/image-20210219205431707.png">
-<meta property="og:image" content="http://example.com/images/image-20210219205839015.png">
-<meta property="og:image" content="http://example.com/images/image-20210219205921075.png">
-<meta property="og:image" content="http://example.com/images/image-20210219205956276.png">
-<meta property="og:image" content="http://example.com/images/image-20210219210047848.png">
-<meta property="og:image" content="http://example.com/images/image-20210219210219689.png">
-<meta property="og:image" content="http://example.com/images/image-20210219210322856.png">
-<meta property="og:image" content="http://example.com/images/image-20210219213349970.png">
-<meta property="og:image" content="http://example.com/images/image-20210219223428799.png">
-<meta property="og:image" content="http://example.com/images/image-20210219223559321.png">
-<meta property="og:image" content="http://example.com/images/image-20210219223750629.png">
-<meta property="og:image" content="http://example.com/images/image-20210219223822684.png">
-<meta property="og:image" content="http://example.com/images/image-20210219223838732.png">
-<meta property="og:image" content="http://example.com/images/image-20210219223947040.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072049273.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072158178.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072214334.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072332215.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072402181.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072422304.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072449078.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072503337.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072549402.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072641331.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072807366.png">
-<meta property="og:image" content="http://example.com/images/image-20210220072846545.png">
-<meta property="og:image" content="http://example.com/images/image-20210220073104414.png">
-<meta property="og:image" content="http://example.com/images/image-20210220073132499.png">
-<meta property="og:image" content="http://example.com/images/image-20210220073214585.png">
-<meta property="og:image" content="http://example.com/images/image-20210220073336344.png">
-<meta property="og:image" content="http://example.com/images/image-20210220073534877.png">
-<meta property="og:image" content="http://example.com/images/image-20210220073624074.png">
-<meta property="og:image" content="http://example.com/images/image-20210220073636614.png">
-<meta property="og:image" content="http://example.com/images/image-20210220074848320.png">
-<meta property="og:image" content="http://example.com/images/image-20210220074927936.png">
-<meta property="og:image" content="http://example.com/images/image-20210220075005570.png">
-<meta property="og:image" content="http://example.com/images/image-20210220075041803.png">
-<meta property="og:image" content="http://example.com/images/image-20210220075116773.png">
-<meta property="og:image" content="http://example.com/images/image-20210220075154821.png">
-<meta property="og:image" content="http://example.com/images/image-20210220075217278.png">
-<meta property="og:image" content="http://example.com/images/image-20210220075622898.png">
-<meta property="og:image" content="http://example.com/images/image-20210220075658606.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216224108606.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216225057126.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216225452470.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216225824075.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216232328225.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216232438960.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216232605293.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216234140487.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216234256392.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216234547570.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216235141468.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216235152322.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216235528290.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216235547767.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210216235758941.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217000026099.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217000338121.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217000401134.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217002837122.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217000534228.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217000553809.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217002957464.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217003019388.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217003035133.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217002906737.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217135149679.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217135313151.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217135736845.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217135935284.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217140013223.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217140116234.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217140159797.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217141700534.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217141916558.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217141936436.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217141947358.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217142148319.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217142153897.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217142200423.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217144009670.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217144026104.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217144136166.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217144228881.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217144303006.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210217144426235.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161127888.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161153908.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161321350.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161337520.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161351222.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161449597.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161519095.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161533113.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161643826.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161726641.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218161742466.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218162307180.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218162409718.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218162601709.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218162658334.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218162722849.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218162755926.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218162804677.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218162820290.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218162916440.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210218162943804.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219205008736.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219205031615.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219205335962.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219205424685.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219205431707.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219205839015.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219205921075.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219205956276.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219210047848.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219210219689.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219210322856.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219213349970.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219223428799.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219223559321.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219223750629.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219223822684.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219223838732.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210219223947040.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072049273.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072158178.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072214334.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072332215.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072402181.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072422304.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072449078.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072503337.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072549402.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072641331.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072807366.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220072846545.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220073104414.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220073132499.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220073214585.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220073336344.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220073534877.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220073624074.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220073636614.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220074848320.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220074927936.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220075005570.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220075041803.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220075116773.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220075154821.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220075217278.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220075622898.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210220075658606.png">
 <meta property="article:published_time" content="2020-07-07T13:54:24.000Z">
 <meta property="article:modified_time" content="2021-02-28T15:18:05.262Z">
 <meta property="article:author" content="grit">
@@ -150,9 +150,9 @@
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/image-20210216224108606.png">
+<meta name="twitter:image" content="https://xiangruihu.github.io/images/image-20210216224108606.png">
 
-<link rel="canonical" href="http://example.com/2020/07/07/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="https://xiangruihu.github.io/2020/07/07/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -325,7 +325,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/07/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://xiangruihu.github.io/2020/07/07/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -885,7 +885,7 @@ h_{\theta} \left( x \right)={\theta^{T}}X</script><p>其中上标T代表矩阵�
 <div class="copyright">
   
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

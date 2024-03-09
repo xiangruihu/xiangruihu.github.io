@@ -21,31 +21,31 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+    var CONFIG = {"hostname":"xiangruihu.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
   </script>
 
   <meta name="description" content="一.Arduino 端口及组成部件 0～13为14个数字输入&#x2F;输出（Digital I&#x2F;O）端口，最大输入&#x2F;输出电流为40mA，其中，端口0和1可用作串口通信数据发送和接收引脚，端口3、5、6、9、10、11具有PWM（脉冲宽度调制）功能，端口13与板载LED灯连接。注：这里的数字指数字量，数字量指在一定范围内不连续变化的物理量；输入&#x2F;输出端口指输入或输出的引脚，引脚电压的变化范围为0～5V，数字">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Arduino开发">
-<meta property="og:url" content="http://example.com/2021/03/17/Arduino%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:url" content="https://xiangruihu.github.io/2021/03/17/Arduino%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="Grit&#39;s blog">
 <meta property="og:description" content="一.Arduino 端口及组成部件 0～13为14个数字输入&#x2F;输出（Digital I&#x2F;O）端口，最大输入&#x2F;输出电流为40mA，其中，端口0和1可用作串口通信数据发送和接收引脚，端口3、5、6、9、10、11具有PWM（脉冲宽度调制）功能，端口13与板载LED灯连接。注：这里的数字指数字量，数字量指在一定范围内不连续变化的物理量；输入&#x2F;输出端口指输入或输出的引脚，引脚电压的变化范围为0～5V，数字">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/image-20210317143833620.png">
-<meta property="og:image" content="http://example.com/images/image-20210317164124125.png">
-<meta property="og:image" content="http://example.com/images/image-20210317170525637.png">
-<meta property="og:image" content="http://example.com/images/image-20210317172014181.png">
-<meta property="og:image" content="http://example.com/images/image-20210317172107730.png">
-<meta property="og:image" content="http://example.com/images/image-20210317182902118.png">
-<meta property="og:image" content="http://example.com/images/image-20210317183111038.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210317143833620.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210317164124125.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210317170525637.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210317172014181.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210317172107730.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210317182902118.png">
+<meta property="og:image" content="https://xiangruihu.github.io/images/image-20210317183111038.png">
 <meta property="article:published_time" content="2021-03-17T04:31:09.000Z">
 <meta property="article:modified_time" content="2021-07-14T05:29:52.149Z">
 <meta property="article:author" content="grit">
 <meta property="article:tag" content="硬件">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/image-20210317143833620.png">
+<meta name="twitter:image" content="https://xiangruihu.github.io/images/image-20210317143833620.png">
 
-<link rel="canonical" href="http://example.com/2021/03/17/Arduino%E5%BC%80%E5%8F%91/">
+<link rel="canonical" href="https://xiangruihu.github.io/2021/03/17/Arduino%E5%BC%80%E5%8F%91/">
 
 
 <script id="page-configurations">
@@ -218,7 +218,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/17/Arduino%E5%BC%80%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="https://xiangruihu.github.io/2021/03/17/Arduino%E5%BC%80%E5%8F%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -565,7 +565,7 @@
 <div class="copyright">
   
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
